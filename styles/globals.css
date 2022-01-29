@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+html,
+body {
+  padding: 1;
+  margin: 1;
+  background-color: #eee;
+  font-family: "Space Mono", monospace;
+}
+
+.link-container {
+  margin-bottom: 10px;
+}
+
+a {
+  font-size: 17px
+}
+
+a:link { text-decoration: none; }
+
+a:hover {
+  text-decoration: underline;
+}

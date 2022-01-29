@@ -1,0 +1,42 @@
+import React from "react";
+import axios from "axios";
+import ReactMarkdown from "react-markdown";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+export default function Page() {
+  const [data, setData] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+  const router = useRouter();
+  const { id } = router.query;
+
+  React.useEffect(() => {
+    if (!id) return;
+
+    axios
+      .get(`/api/post/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
+
+  if (loading) {
+    return <p>loading</p>;
+  } else {
+    return (
+      <>
+        <div>
+          <Link href="/">
+            <a>← home</a>
+          </Link>
+        </div>
+        <div>
+          <ReactMarkdown>{data.payload}</ReactMarkdown>
+        </div>
+      </>
+    );
+  }
+}
