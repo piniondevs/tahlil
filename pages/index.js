@@ -47,7 +47,7 @@ export default function Home({ data }) {
       {data.payload.map((item) => {
         return (
           <div className="link-container">
-            <Link href={`/posts/${encodeURIComponent(item)}`}>
+            <Link href={`/${encodeURIComponent(item)}`}>
               <a>→ {item}</a>
             </Link>
           </div>
