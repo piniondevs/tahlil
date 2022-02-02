@@ -14,7 +14,7 @@ export default function Page() {
     if (!id) return;
 
     axios
-      .get(`/api/post/${id}`)
+      .get(`https://tahlils-blog.herokuapp.com/posts/${id}`)
       .then((res) => {
         console.log(res.data);
         setData(res.data);
@@ -34,7 +34,7 @@ export default function Page() {
           </Link>
         </div>
         <div>
-          <ReactMarkdown>{data.payload}</ReactMarkdown>
+          <ReactMarkdown>{data}</ReactMarkdown>
         </div>
       </>
     );
