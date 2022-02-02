@@ -3,6 +3,7 @@ import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function Page() {
   const [data, setData] = React.useState(null);
@@ -28,6 +29,9 @@ export default function Page() {
   } else {
     return (
       <>
+        <Head>
+          <title>{id}</title>
+        </Head>
         <div>
           <Link href="/">
             <a>← home</a>

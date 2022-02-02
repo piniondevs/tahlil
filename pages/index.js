@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Link from "next/link";
+import Head from "next/head";
 
 export async function getStaticProps() {
   const res = await axios.get("https://tahlils-blog.herokuapp.com/posts/");
@@ -14,7 +15,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts }) {
-
   const socials = [
     { name: "Email", url: "mailto:realtahlil@gmail.com?Subject=Hello" },
     { name: "GitHub", url: "https://github.com/tahlilma" },
@@ -27,6 +27,9 @@ export default function Home({ posts }) {
 
   return (
     <div>
+      <Head>
+        <title>Home</title>
+      </Head>
       <h1>Hi</h1>
       <p>
         My names <strong>Tahlil</strong>, Im a self proclaimed software
