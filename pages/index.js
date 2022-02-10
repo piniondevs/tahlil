@@ -38,7 +38,7 @@ export default function Home({ posts }) {
       </p>
 
       <h2>Contact Me:</h2>
-      {socials.map((item) => {
+      {socials.reverse().map((item) => {
         return (
           <div className="link-container">
             <a href={item.url}>{item.name}</a>
