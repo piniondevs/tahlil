@@ -1,12 +1,10 @@
 import React from "react";
-import axios from "axios";
 import Link from "next/link";
 import Head from "next/head";
+import { getPostNames } from "../lib/post";
 
 export async function getStaticProps() {
-  const res = await axios.get("https://tahlils-blog.herokuapp.com/posts/");
-  const posts = res.data;
-
+  const posts = await getPostNames();
   return {
     props: {
       posts,

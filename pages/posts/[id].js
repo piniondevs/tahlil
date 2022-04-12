@@ -1,46 +1,46 @@
 import React from "react";
-import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import Head from "next/head";
+import { getPostNames, getPostContent } from "../../lib/post";
 
-export default function Page() {
-  const [data, setData] = React.useState(null);
-  const [loading, setLoading] = React.useState(true);
-  const router = useRouter();
-  const { id } = router.query;
+export async function getStaticPaths() {
+  const posts = await getPostNames();
+  const returnified = posts.map((item) => {
+    return { params: { id: item } };
+  });
 
-  React.useEffect(() => {
-    if (!id) return;
+  return {
+    paths: returnified,
+    fallback: false,
+  };
+}
 
-    axios
-      .get(`https://tahlils-blog.herokuapp.com/posts/${id}`)
-      .then((res) => {
-        console.log(res.data);
-        setData(res.data);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
-  }, [id]);
+export async function getStaticProps({ params }) {
+  const fileData = await getPostContent(params.id);
 
-  if (loading) {
-    return <p>loading</p>;
-  } else {
-    return (
-      <>
-        <Head>
-          <title>{id}</title>
-        </Head>
-        <div>
-          <Link href="/">
-            <a>← home</a>
-          </Link>
-        </div>
-        <div>
-          <ReactMarkdown>{data}</ReactMarkdown>
-        </div>
-      </>
-    );
-  }
+  return {
+    props: {
+      title: params.id,
+      content: fileData,
+    },
+  };
+}
+
+export default function Page({ title, content }) {
+  return (
+    <>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <div>
+        <Link href="/">
+          <a>← home</a>
+        </Link>
+      </div>
+      <div>
+        <ReactMarkdown>{content}</ReactMarkdown>
+      </div>
+    </>
+  );
 }
