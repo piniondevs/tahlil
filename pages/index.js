@@ -31,7 +31,7 @@ export default function Home({ posts }) {
       </Head>
       <h1>Hi</h1>
       <p>
-        My names <strong>Tahlil</strong>, Im a self proclaimed software
+        My name's <strong>Tahlil</strong>. I'm a self proclaimed software
         developer and I mainly work on mobile apps, websites and Discord bots. I
         also do other stuff from time to time.
       </p>
