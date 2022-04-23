@@ -27,6 +27,7 @@ export default function Home({ posts }) {
     <div>
       <Head>
         <title>Home</title>
+        <meta name="description" content="Tahlils personal site." />
       </Head>
       <h1>Hi</h1>
       <p>

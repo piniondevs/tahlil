@@ -9,7 +9,7 @@ The basic idea for this project was to create a boilerplate which will automatic
 
 The main thing that the command handler uses is what the JS plebs call uhh... Ok I forgot the name. But its basically a way of accessing a object using the name of its key. So an example would be.
 
-```
+```js
 const someObj = {
   balls: true
 }
@@ -24,7 +24,7 @@ Essentially I created a commands directory and created some files in that folder
 
 Basically I made this schema which all the files in the commands directory needs to follow. Then all the files in the command directory just export an object following the schema i mentioned above. The schema goes like this.
 
-```
+```js
 {
   name: 'ping' // Name of the command (same as file name)
   alt: 'p', // Short form of the command which will also trigger the command
@@ -35,7 +35,7 @@ Basically I made this schema which all the files in the commands directory needs
 
 So after that I just wrote a function which takes every single file in the commands directory, imports the objects from the files and compiles them into a single object. So like if i had 2 commands the final single object would be 
 
-```
+```js
 {
   ping: {
     name: 'ping'
@@ -54,7 +54,7 @@ So after that I just wrote a function which takes every single file in the comma
 
 As you can see we can now actually call the handler using the method of object accessing i mentioned earlier. So now for example we do some hardcore string manipulation and we figure out what command the user used after the prefix. We can just call the function like so
 
-```
+```js
 const commandName = 'help'; // This is just an example
 commandIndex[commandName].handler(message)
 ```
@@ -63,7 +63,7 @@ We also pass in the message object cause like we need access to the message that
 
 Now I did mention the matter of alt commands and tbh it literally works in the same way just like instead of using the full name as the key it uses the alt as the key. So the object I showed a few mins earlier would become 
 
-```
+```js
 {
   p: {
     name: 'ping'
@@ -91,7 +91,7 @@ Thats the thing.
 What I did is just check whether the command returns undefined when I access the object using the message which is sent by the user.
 Ill just show you the code cause im too lazy to explain it.
 
-```
+```js
 const commandIndex = metaGenerator();
 if (!commandIndex[command]) {
   const altIndex = metaGenerator({ type: "alt" });

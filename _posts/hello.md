@@ -10,8 +10,21 @@ This is the first post in my blog. Im just writing this to see whether the markd
 *Italic* **Bold** ***Italic Bold***
 
 ## Code Blocks
+```js
+console.log('We do a little syntax highlighting')
 ```
-console.log('You cant see shit since im using monospace fonts)
+
+```py
+print("Ew Python");
+```
+
+```go
+package main
+import "fmt"
+
+func main() {
+    fmt.Println("Go Is Fine")
+}
 ```
 
 ## Block Qoutes
