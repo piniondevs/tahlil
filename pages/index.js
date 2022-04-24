@@ -37,7 +37,7 @@ export default function Home({ posts }) {
       </p>
 
       <h2>Contact Me:</h2>
-      {socials.reverse().map((item) => {
+      {socials.map((item) => {
         return (
           <div className="link-container">
             <a href={item.url}>{item.name}</a>
@@ -46,7 +46,7 @@ export default function Home({ posts }) {
       })}
 
       <h2>Blog Posts:</h2>
-      {posts.map((item) => {
+      {posts.reverse().map((item) => {
         return (
           <div className="link-container">
             <Link href={`/posts/${encodeURIComponent(item)}`}>
