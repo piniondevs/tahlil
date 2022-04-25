@@ -46,14 +46,16 @@ client.on("messageDelete", async (message) => {
 });
 ```
 
-Thats literally all the code that I use to save the deleted message. As you can see I clear the `attachments` directory before i save the new deleted attachment. It works the same as overwriting the old JSON data. 
+Thats literally all the code that I use to save the deleted message. As you can see I clear the `attachments` directory before i save the new deleted attachment. It works the same as overwriting the old JSON data. So like the attachment from the old deleted message gets fuckin yeeted.
 
 I didnt implement anything related to attachments in the edit part. The code behind the edit part of my bot is boring so I wont talk about that.
 
-## Its always the dates
-Yeah so the `message` object returned by the event had a certain property called `createdTimestamp`. The timestamp is  in [UNIX EPOCH](https://en.wikipedia.org/wiki/Unix_time). Now theres nothing wrong with that and like you can convert epoch time to normal date time very easily. The issue lied in the fact that unix epoch is calculated as the number of seconds since 1970. You can convert into milliseconds by just multiplying it with a 1000 and put that into a `Date()` to get the current date. The thing is discord already fucking multiplied it stock. I did not have to multiply it. 
+*BTW those weird minecraft enchanting table rune looking shit is something used to color the outputs.*
 
-The thing was. I didnt know that. Which meant I kept getting the wrong fucking time. I spend 6 hours trying to fix that shit. Only to notice the fact that discord already multiplied it. 
+## Its always the dates
+Yeah so the `message` object returned by the event had a certain property called `createdTimestamp`. The timestamp is  in [UNIX EPOCH](https://en.wikipedia.org/wiki/Unix_time). Now theres nothing wrong with that and like you can convert epoch time to normal date time very easily. The issue lied in the fact that unix epoch is calculated as the number of seconds since 1970. You can convert into milliseconds by just multiplying it with 1000 and put that into a `Date()` to get the current date. The thing is discord already fucking multiplied it stock. I did not have to multiply it. 
+
+The thing was. I didnt know that. Which meant I kept getting the wrong fucking time. I spent 6 hours trying to fix that shit. Only to notice the fact that discord already multiplied it. 
 
 
 ## Firends
