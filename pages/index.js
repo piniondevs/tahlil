@@ -1,18 +1,19 @@
 import React from "react";
 import Link from "next/link";
 import Head from "next/head";
-import { getPostNames } from "../lib/post";
+import { getPostMeta } from "../lib/post";
 
 export async function getStaticProps() {
-  const posts = await getPostNames();
+  const data = await getPostMeta();
+  data.sort((a, b) => b.index - a.index);
   return {
     props: {
-      posts,
+      data,
     },
   };
 }
 
-export default function Home({ posts }) {
+export default function Home({ data }) {
   const socials = [
     { name: "Email", url: "mailto:realtahlil@gmail.com?Subject=Hello" },
     { name: "GitHub", url: "https://github.com/tahlilma" },
@@ -46,11 +47,11 @@ export default function Home({ posts }) {
       })}
 
       <h2>Blog Posts:</h2>
-      {posts.reverse().map((item) => {
+      {data.map((item) => {
         return (
           <div className="link-container">
-            <Link href={`/posts/${encodeURIComponent(item)}`}>
-              <a>→ {item}</a>
+            <Link href={`/posts/${encodeURIComponent(item.slug)}`}>
+              <a>→ {item.title}</a>
             </Link>
           </div>
         );

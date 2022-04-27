@@ -4,16 +4,16 @@ import Link from "next/link";
 import Head from "next/head";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { nightOwl as theme } from "react-syntax-highlighter/dist/cjs/styles/prism/";
-import { getPostNames, getPostContent } from "../../lib/post";
+import { getPostMeta, getPostContent } from "../../lib/post";
 
 export async function getStaticPaths() {
-  const posts = await getPostNames();
-  const returnified = posts.map((item) => {
-    return { params: { id: item } };
+  const data = await getPostMeta();
+  const paths = data.map((item) => {
+    return { params: { id: item.slug } };
   });
 
   return {
-    paths: returnified,
+    paths: paths,
     fallback: false,
   };
 }
@@ -22,18 +22,19 @@ export async function getStaticProps({ params }) {
   const fileData = await getPostContent(params.id);
   return {
     props: {
-      title: params.id,
-      content: fileData,
+      title: fileData.data.title,
+      description: fileData.data.description,
+      content: fileData.content,
     },
   };
 }
 
-export default function Page({ title, content }) {
+export default function Page({ title, description, content }) {
   return (
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content="A post made on tahlils site." />
+        <meta name="description" content={description} />
       </Head>
       <div>
         <Link href="/">
