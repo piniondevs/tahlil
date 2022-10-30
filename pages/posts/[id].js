@@ -38,7 +38,7 @@ export default function Page({ title, description, content }) {
       </Head>
       <div>
         <Link href="/">
-          <a>← home</a>
+          ← home
         </Link>
       </div>
       <div>

@@ -2,6 +2,9 @@ import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 import { getPostMeta } from "../lib/post";
+import { Space_Mono } from '@next/font/google'
+
+const SpaceMono = Space_Mono({ weight: '700', style: 'normal'  });
 
 export async function getStaticProps() {
   const data = await getPostMeta();
@@ -51,7 +54,7 @@ export default function Home({ data }) {
         return (
           <div className="link-container">
             <Link href={`/posts/${encodeURIComponent(item.slug)}`}>
-              <a>→ {item.title}</a>
+              → {item.title}
             </Link>
           </div>
         );
