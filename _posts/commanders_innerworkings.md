@@ -7,7 +7,7 @@ index: 0
 
 # Commanders Innerworkings
 
-So i recently made a boilerplate for Discord JS 12 called [commander](https://github.com/tahlilma/commander). It's bascically a small project I decided to work on for Nehan since he had a pretty shitty command handler _(the same does not hold true anymore)_ on a bot he was working on. Now I do know for a fact that Discord JS 12 is deprecated and shit but still, theres some smart code _(in my eyes)_ behind my boilerplate.
+So i recently made a boilerplate for Discord JS 12 called [commander](https://github.com/tahlilma/commander). It's bascically a small project I decided to work on for Nehan since he had a pretty shitty command handler on a bot he was working on. Now I do know for a fact that Discord JS 12 is deprecated and shit but still, theres some smart code _(in my eyes)_ behind my boilerplate.
 
 Im making this post to basically cope with Nehan not using my boilerplate and deciding to essentially steal my features and add it to his own bot. I really shouldnt be one to talk since I steal his shit from time to time too.
 

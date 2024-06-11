@@ -2,9 +2,6 @@ import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 import { getPostMeta } from "../lib/post";
-import { Space_Mono } from '@next/font/google'
-
-const SpaceMono = Space_Mono({ weight: '700', style: 'normal'  });
 
 export async function getStaticProps() {
   const data = await getPostMeta();
@@ -18,7 +15,7 @@ export async function getStaticProps() {
 
 export default function Home({ data }) {
   const socials = [
-    { name: "Email", url: "mailto:realtahlil@gmail.com?Subject=Hello" },
+    { name: "Email", url: "mailto:tahlilma1910@gmail.com?Subject=Hello" },
     { name: "GitHub", url: "https://github.com/tahlilma" },
     {
       name: "StackOverflow",
@@ -37,7 +34,7 @@ export default function Home({ data }) {
       <p>
         My name's <strong>Tahlil</strong>. I'm a self proclaimed software
         developer and I mainly work on mobile apps, websites and Discord bots. I
-        also do other stuff from time to time.
+        also play the guitar from time to time.
       </p>
 
       <h2>Contact Me:</h2>
